@@ -1,0 +1,34 @@
+[
+  {
+    "processName": "xmrig",
+    "sha256": "",
+    "category": "CryptoMiner",
+    "severity": "Critical",
+    "description": "Công cụ đào tiền ảo Monero, thường bị lợi dụng chạy ngầm chiếm CPU",
+    "source": "dangerous_db_sample"
+  },
+  {
+    "processName": "mimikatz",
+    "sha256": "",
+    "category": "Credential Theft",
+    "severity": "Critical",
+    "description": "Công cụ đánh cắp thông tin đăng nhập Windows (tham khảo, hiếm gặp trên Linux)",
+    "source": "dangerous_db_sample"
+  },
+  {
+    "processName": "ncat",
+    "sha256": "",
+    "category": "Reverse Shell Tool",
+    "severity": "Warning",
+    "description": "Công cụ mạng thường bị lợi dụng để tạo reverse shell",
+    "source": "dangerous_db_sample"
+  },
+  {
+    "processName": "nc",
+    "sha256": "",
+    "category": "Reverse Shell Tool",
+    "severity": "Warning",
+    "description": "Netcat - công cụ mạng thường bị lợi dụng để tạo reverse shell",
+    "source": "dangerous_db_sample"
+  }
+]

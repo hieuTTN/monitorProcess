@@ -1,0 +1,13 @@
+{
+  "EnableTelegram": true,
+  "TelegramBotToken": "8798780071:AAHyhMkME9o8a1g92uV1_ge_2Mb0jXUprs0",
+  "TelegramChatId": "1467011082",
+  "EnableEmail": true,
+  "SmtpHost": "smtp.gmail.com",
+  "SmtpPort": 587,
+  "SmtpUseSsl": true,
+  "SmtpUsername": "edustar343@gmail.com",
+  "SmtpPassword": "rsco pbfa fqjj zuxb",
+  "FromEmail": "edustar343@gmail.com",
+  "ToEmail": "edustar343@gmail.com"
+}

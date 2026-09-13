@@ -1,0 +1,17 @@
+# Build and output directories
+bin/
+obj/
+
+# User-specific files and settings
+*.user
+*.userosscache
+*.sln.docstates
+
+# IDE / Editor configuration
+.vs/
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db

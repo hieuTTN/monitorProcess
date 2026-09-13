@@ -1,0 +1,6 @@
+{
+  "EnableCpuThreshold": false,
+  "CpuThresholdPercent": 80,
+  "EnableRamThreshold": true,
+  "RamThresholdPercent": 1
+}

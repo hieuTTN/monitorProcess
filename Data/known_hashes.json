@@ -1,0 +1,62 @@
+[
+  {
+    "ExePath": "/usr/sbin/sshd",
+    "Sha256": "07590f8ed30b1f37729f2d5336a8ee783e510ffa84611277eb64aadc34172d80",
+    "Description": "D\u1ECBch v\u1EE5 SSH h\u1EC7 th\u1ED1ng"
+  },
+  {
+    "ExePath": "/usr/bin/bash",
+    "Sha256": "59474588a312b6b6e73e5a42a59bf71e62b55416b6c9d5e4a6e1c630c2a9ecd4",
+    "Description": "Shell m\u1EB7c \u0111\u1ECBnh"
+  },
+  {
+    "ExePath": "/usr/bin/sudo",
+    "Sha256": "1e000f41739201f030cdc588fbe50d5438570f5386104c9521543824827fb985",
+    "Description": "C\u00F4ng c\u1EE5 n\u00E2ng quy\u1EC1n"
+  },
+  {
+    "ExePath": "/usr/bin/su",
+    "Sha256": "53ec33c5d1047a359262d8a9514a911029babc1d5ceec626df64dfebd5808e84",
+    "Description": "Chuy\u1EC3n \u0111\u1ED5i user"
+  },
+  {
+    "ExePath": "/usr/bin/passwd",
+    "Sha256": "82fb3e989f9f224f1b1b5687109fa4c31fc60572876cd7c3486ff107d451b6ee",
+    "Description": "\u0110\u1ED5i m\u1EADt kh\u1EA9u user"
+  },
+  {
+    "ExePath": "/usr/sbin/cron",
+    "Sha256": "ffc30864da514025c073a29d5afc6705ff8bbe4ecfdbc7917dd674e37b7b1b8a",
+    "Description": "L\u1ECBch tr\u00ECnh ch\u1EA1y t\u00E1c v\u1EE5 \u0111\u1ECBnh k\u1EF3"
+  },
+  {
+    "ExePath": "/usr/bin/ssh",
+    "Sha256": "6c1f037ffd9367e6cde9170848f7ea9e39ceb85376feffa05a579d5b95f31d21",
+    "Description": "Client SSH"
+  },
+  {
+    "ExePath": "/usr/bin/curl",
+    "Sha256": "b1b4a0805c83790a5854ff58ed222cecebb40ce7f5daeca33878b47089e9c206",
+    "Description": "T\u1EA3i d\u1EEF li\u1EC7u qua HTTP/HTTPS"
+  },
+  {
+    "ExePath": "/usr/bin/wget",
+    "Sha256": "2f750492a5ddee86aa7ca11e29b5ae627512b371d0b1e717758638954026139b",
+    "Description": "T\u1EA3i d\u1EEF li\u1EC7u qua HTTP/HTTPS"
+  },
+  {
+    "ExePath": "/usr/bin/systemctl",
+    "Sha256": "a91f8e2c94cfcfe84487103b574ed564dbcb766786edbb4315413b8e2f8b5b69",
+    "Description": "Qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5 systemd"
+  },
+  {
+    "ExePath": "/usr/bin/python3",
+    "Sha256": "7d51cd6b48b521277f5caa4610a82126e315fa2be4df069823a8b1eeb5bd4a86",
+    "Description": "Tr\u00ECnh th\u00F4ng d\u1ECBch Python 3"
+  },
+  {
+    "ExePath": "/usr/sbin/mysqld",
+    "Sha256": "7fb0280d2af4b628cdcbce360dc5f9a03c93483a365b1e022293581ce0013ea0",
+    "Description": "C\u01A1 s\u1EDF d\u1EEF li\u1EC7u MySQL (\u0111\u01B0\u1EDDng d\u1EABn thay th\u1EBF)"
+  }
+]

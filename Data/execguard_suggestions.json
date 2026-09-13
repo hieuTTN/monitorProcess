@@ -1,0 +1,37 @@
+[
+  {
+    "ExePath": "/usr/share/code/resources/app/out/vs/base/node/cpuUsage.sh",
+    "ProcessName": "cpuUsage.sh",
+    "SeenCount": 37,
+    "FirstSeenAt": "2026-09-13T07:56:22.8782949+07:00",
+    "LastSeenAt": "2026-09-13T07:59:22.9028618+07:00"
+  },
+  {
+    "ExePath": "/usr/bin/sed",
+    "ProcessName": "sed",
+    "SeenCount": 74,
+    "FirstSeenAt": "2026-09-13T07:56:22.8861121+07:00",
+    "LastSeenAt": "2026-09-13T07:59:23.9220741+07:00"
+  },
+  {
+    "ExePath": "/usr/bin/cat",
+    "ProcessName": "cat",
+    "SeenCount": 370,
+    "FirstSeenAt": "2026-09-13T07:56:22.8888199+07:00",
+    "LastSeenAt": "2026-09-13T07:59:23.9355411+07:00"
+  },
+  {
+    "ExePath": "/usr/bin/sleep",
+    "ProcessName": "sleep",
+    "SeenCount": 37,
+    "FirstSeenAt": "2026-09-13T07:56:22.9035621+07:00",
+    "LastSeenAt": "2026-09-13T07:59:22.9195542+07:00"
+  },
+  {
+    "ExePath": "/usr/bin/gedit",
+    "ProcessName": "gedit",
+    "SeenCount": 1,
+    "FirstSeenAt": "2026-09-13T07:56:26.692895+07:00",
+    "LastSeenAt": "2026-09-13T07:56:26.692895+07:00"
+  }
+]

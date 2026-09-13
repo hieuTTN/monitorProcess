@@ -1,0 +1,130 @@
+[
+  {
+    "ProcessName": "sshd",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "systemd",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "bash",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "dash",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "sh",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "gnome-terminal-server",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "gnome-terminal",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "gnome-terminal.real",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "gnome-terminal.wrapper",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "firefox",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "sudo",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "systemctl",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "ld-linux-x86-64.so.2",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "python3.10",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "which.debianutils",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "ps.sh",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "ls.coreutils",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "cat.coreutils",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "grep.grep",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "awk.gawk",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "sed.sed",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "Vim.basic",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "lesspipe",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "git",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "nano",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "curl",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "wget",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "xz",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "ps",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "dirname",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "basename",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "dircolors",
+    "ExpectedSha256": ""
+  }
+]

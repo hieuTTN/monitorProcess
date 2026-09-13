@@ -1,0 +1,24 @@
+{
+  "Enabled": true,
+  "ScoreRunningFromTmp": 30,
+  "EnableHashDatabaseCheck": true,
+  "ScoreHashNotInDatabase": 20,
+  "ScoreExecutableChanged": 60,
+  "EnableCpuCheck": true,
+  "ScoreHighCpu": 15,
+  "CpuThresholdForScoring": 90,
+  "EnablePortCheck": true,
+  "ScoreUnusualPort": 20,
+  "TrustedPorts": [
+    22,
+    25,
+    53,
+    80,
+    443,
+    3306,
+    5432,
+    8080,
+    8090
+  ],
+  "DangerousThresholdPercent": 50
+}

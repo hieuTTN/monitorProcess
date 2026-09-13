@@ -1,0 +1,67 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="monitorProcess.controllers.MainWindow"
+        Title="Ubuntu Process Monitor" Width="1000" Height="600"
+        WindowStartupLocation="CenterScreen">
+
+    <!-- Style cho nút điều hướng: bình thường / hover / đang active -->
+    <Window.Styles>
+        <Style Selector="Button.navBtn">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#b0b0c0"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.15"/>
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <!-- Khi rê chuột qua (chỉ áp dụng nếu nút CHƯA active) -->
+        <Style Selector="Button.navBtn:pointerover:not(.active) /template/ ContentPresenter">
+            <Setter Property="Background" Value="#2a2a3d"/>
+        </Style>
+
+        <!-- Nút đang được chọn - class "active" gán/gỡ bằng code-behind -->
+        <Style Selector="Button.navBtn.active">
+            <Setter Property="Background" Value="#3b3b58"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid ColumnDefinitions="220, *">
+        <!-- Sidebar Navbar bên trái -->
+        <Border Grid.Column="0" Background="#1e1e2e" Padding="10">
+            <StackPanel Spacing="8">
+                <TextBlock Text="PROCESS MONITOR" Foreground="White" 
+                           FontSize="16" FontWeight="Bold" 
+                           Margin="0,10,0,20" HorizontalAlignment="Center"/>
+
+                <Button Content="Dashboard" Name="BtnDashboard" Click="OnNavClick"
+                        Classes="navBtn active"
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,8"/>
+
+                <Button Content="Tiến trình" Name="BtnProcess" Click="OnNavClick" 
+                        Classes="navBtn"
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,8"/>
+
+                <Button Content="Whitelist" Name="BtnWhitelist" Click="OnNavClick"
+                    Classes="navBtn"
+                    HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,8"/>
+
+                <Button Content="Cấu hình" Name="BtnSettings" Click="OnNavClick" 
+                        Classes="navBtn"
+                        HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,8"/>
+                <Button Content="Hash toàn vẹn" Name="BtnHashIntegrity" Click="OnNavClick"
+                    Classes="navBtn"
+                    HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,8"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Khung nội dung thay đổi linh hoạt bên phải -->
+        <Border Grid.Column="1" Background="#282a36" Padding="20">
+            <ContentControl Name="MainContentArea" />
+        </Border>
+    </Grid>
+</Window>
