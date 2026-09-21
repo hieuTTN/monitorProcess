@@ -4,7 +4,7 @@
 
     <Grid RowDefinitions="Auto, Auto, *, Auto">
         <StackPanel Grid.Row="0" Margin="0,0,0,15">
-            <TextBlock Text="DANH SÁCH TIẾN TRÌNH" FontSize="18" FontWeight="Bold" Foreground="White"/>
+            <TextBlock Text="DANH SÁCH TIẾN TRÌNH" FontSize="18" Foreground="#1A1A1A"/>
             <TextBlock Text="Theo dõi tài nguyên, cổng mạng và trạng thái các tiến trình đang chạy" Foreground="Gray" Margin="0,5,0,0"/>
             <TextBlock Text="Để hiển thị đúng % CPU, hãy tắt tự động load sau 3s và ấn làm mới" Foreground="Gray" Margin="0,5,0,0"/>
         </StackPanel>
@@ -30,24 +30,24 @@
 
             <Button Name="BtnExportCsv" Grid.Column="3" Content="Xuất CSV"
                 Click="OnExportCsvClick" Margin="8,0,0,0"
-                Background="#16a085" Foreground="White" />
+                Background="#16a085" Foreground="#1A1A1A" />
 
             <Button Name="BtnExportPdf" Grid.Column="4" Content="Xuất PDF"
                 Click="OnExportPdfClick" Margin="8,0,0,0"
-                Background="#8e44ad" Foreground="White" />
+                Background="#8e44ad" Foreground="#1A1A1A" />
                 
             <CheckBox Name="ChkAutoRefresh" Grid.Column="5"
                       Content="Tự động (3s)" IsChecked="True"
                       Margin="8,0,0,0" VerticalAlignment="Center" />
         </Grid>
 
-        <Border Grid.Row="2" Background="#1e1e2e" CornerRadius="8" Padding="10">
+        <Border Grid.Row="2" Background="#FFFFFF" CornerRadius="8" Padding="10">
             <ListBox Name="LstProcesses" Background="Transparent">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Padding="8,6" CornerRadius="4" Background="{Binding RowBackground}">
                             <StackPanel>
-                                <TextBlock Foreground="White" FontWeight="Bold">
+                                <TextBlock Foreground="#1A1A1A" FontWeight="Bold">
                                     <Run Text="{Binding Pid}"/>
                                     <Run Text=" - "/>
                                     <Run Text="{Binding Name}"/>
@@ -57,8 +57,10 @@
                                     <Run Text="{Binding State}"/>
                                 </TextBlock>
                                 <TextBlock Foreground="Gray" FontSize="12" Text="{Binding ExePath}" />
-                                <TextBlock Foreground="#2ecc71" FontSize="12" Text="{Binding ResourceText}" />
-                                <TextBlock Foreground="#9b59b6" FontSize="12" Text="{Binding IoText}" />
+                                <StackPanel Orientation="Horizontal" Spacing="16">
+                                    <TextBlock Foreground="#2ecc71" FontSize="12" Text="{Binding ResourceText}" />
+                                    <TextBlock Foreground="#9b59b6" FontSize="12" Text="{Binding IoText}" />
+                                </StackPanel>
                                 
                                 <TextBlock Foreground="#3498db" FontSize="12"
                                            Text="{Binding Ports}"
@@ -70,13 +72,13 @@
 
                                 <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,8,0,0">
                                     <Button Content="Kill" Tag="{Binding Pid}" Click="OnKillClick"
-                                            Background="#c0392b" Foreground="White" Padding="10,4" FontSize="11"/>
+                                            Background="#c0392b" Foreground="#1A1A1A" Padding="10,4" FontSize="11"/>
                                     <Button Content="Dừng" Tag="{Binding Pid}" Click="OnStopClick"
-                                            Background="#e67e22" Foreground="White" Padding="10,4" FontSize="11"/>
+                                            Background="#e67e22" Foreground="#1A1A1A" Padding="10,4" FontSize="11"/>
                                     <Button Content="Tiếp tục" Tag="{Binding Pid}" Click="OnContinueClick"
-                                            Background="#27ae60" Foreground="White" Padding="10,4" FontSize="11"/>
+                                            Background="#27ae60" Foreground="#1A1A1A" Padding="10,4" FontSize="11"/>
                                     <Button Content="Khởi động lại" Tag="{Binding Pid}" Click="OnRestartClick"
-                                            Background="#2980b9" Foreground="White" Padding="10,4" FontSize="11"/>
+                                            Background="#2980b9" Foreground="#1A1A1A" Padding="10,4" FontSize="11"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>

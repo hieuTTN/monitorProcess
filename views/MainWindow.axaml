@@ -32,10 +32,10 @@
 
     <Grid ColumnDefinitions="220, *">
         <!-- Sidebar Navbar bên trái -->
-        <Border Grid.Column="0" Background="#1e1e2e" Padding="10">
+        <Border Grid.Column="0" Background="#FFFFFF" Padding="10">
             <StackPanel Spacing="8">
                 <TextBlock Text="PROCESS MONITOR" Foreground="White" 
-                           FontSize="16" FontWeight="Bold" 
+                           FontSize="16"
                            Margin="0,10,0,20" HorizontalAlignment="Center"/>
 
                 <Button Content="Dashboard" Name="BtnDashboard" Click="OnNavClick"
@@ -60,7 +60,7 @@
         </Border>
 
         <!-- Khung nội dung thay đổi linh hoạt bên phải -->
-        <Border Grid.Column="1" Background="#282a36" Padding="20">
+        <Border Grid.Column="1" Background="#F4F4F7" Padding="20">
             <ContentControl Name="MainContentArea" />
         </Border>
     </Grid>

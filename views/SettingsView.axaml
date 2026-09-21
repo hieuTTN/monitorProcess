@@ -4,65 +4,65 @@
 
     <ScrollViewer>
         <StackPanel Spacing="15" Margin="0,0,0,20">
-            <TextBlock Text="CẤU HÌNH CẢNH BÁO" FontSize="18" FontWeight="Bold" Foreground="White"/>
+            <TextBlock Text="CẤU HÌNH CẢNH BÁO" FontSize="18" Foreground="#1A1A1A"/>
             <TextBlock Text="Thiết lập kết nối Telegram Bot và Email nhận thông báo" Foreground="Gray"/>
 
             <!-- Telegram -->
-            <Border Background="#1e1e2e" CornerRadius="8" Padding="15">
+            <Border Background="#FFFFFF" CornerRadius="8" Padding="15">
                 <StackPanel Spacing="10">
-                    <CheckBox Name="ChkEnableTelegram" Content="Bật cảnh báo qua Telegram" Foreground="White"/>
+                    <CheckBox Name="ChkEnableTelegram" Content="Bật cảnh báo qua Telegram" Foreground="#1A1A1A"/>
 
-                    <TextBlock Text="Telegram Bot Token:" Foreground="White"/>
+                    <TextBlock Text="Telegram Bot Token:" Foreground="#1A1A1A"/>
                     <TextBox Name="TxtBotToken" Watermark="Nhập Bot Token..."/>
 
-                    <TextBlock Text="Chat ID:" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBlock Text="Chat ID:" Foreground="#1A1A1A" Margin="0,10,0,0"/>
                     <TextBox Name="TxtChatId" Watermark="Nhập Telegram Chat ID..."/>
                 </StackPanel>
             </Border>
 
             <!-- Email -->
-            <Border Background="#1e1e2e" CornerRadius="8" Padding="15">
+            <Border Background="#FFFFFF" CornerRadius="8" Padding="15">
                 <StackPanel Spacing="10">
-                    <CheckBox Name="ChkEnableEmail" Content="Bật cảnh báo qua Email" Foreground="White"/>
+                    <CheckBox Name="ChkEnableEmail" Content="Bật cảnh báo qua Email" Foreground="#1A1A1A"/>
 
-                    <TextBlock Text="SMTP Host:" Foreground="White"/>
+                    <TextBlock Text="SMTP Host:" Foreground="#1A1A1A"/>
                     <TextBox Name="TxtSmtpHost" Watermark="vd: smtp.gmail.com"/>
 
-                    <TextBlock Text="SMTP Port:" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBlock Text="SMTP Port:" Foreground="#1A1A1A" Margin="0,10,0,0"/>
                     <TextBox Name="TxtSmtpPort" Watermark="vd: 587"/>
 
                     <CheckBox Name="ChkSmtpSsl" Content="Dùng SSL/TLS" IsChecked="True"/>
 
-                    <TextBlock Text="Email đăng nhập SMTP (Username):" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBlock Text="Email đăng nhập SMTP (Username):" Foreground="#1A1A1A" Margin="0,10,0,0"/>
                     <TextBox Name="TxtSmtpUsername" Watermark="Email dùng để đăng nhập SMTP"/>
 
-                    <TextBlock Text="Mật khẩu / App Password:" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBlock Text="Mật khẩu / App Password:" Foreground="#1A1A1A" Margin="0,10,0,0"/>
                     <TextBox Name="TxtSmtpPassword" Watermark="Mật khẩu ứng dụng" PasswordChar="*"/>
 
-                    <TextBlock Text="Email người gửi (From):" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBlock Text="Email người gửi (From):" Foreground="#1A1A1A" Margin="0,10,0,0"/>
                     <TextBox Name="TxtFromEmail" Watermark="vd: monitor@example.com"/>
 
-                    <TextBlock Text="Email người nhận (To):" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBlock Text="Email người nhận (To):" Foreground="#1A1A1A" Margin="0,10,0,0"/>
                     <TextBox Name="TxtToEmail" Watermark="vd: admin@example.com"/>
                 </StackPanel>
             </Border>
 
             <!-- Ngưỡng cảnh báo CPU/RAM -->
-            <Border Background="#1e1e2e" CornerRadius="8" Padding="15">
+            <Border Background="#FFFFFF" CornerRadius="8" Padding="15">
                 <StackPanel Spacing="10">
-                    <TextBlock Text="NGƯỠNG CẢNH BÁO TÀI NGUYÊN" FontSize="15" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="NGƯỠNG CẢNH BÁO TÀI NGUYÊN" FontSize="15" FontWeight="Bold" Foreground="#1A1A1A"/>
                     <TextBlock Text="Tiến trình vượt ngưỡng sẽ được đánh dấu bất thường ở trang Danh sách tiến trình"
                             Foreground="Gray" FontSize="12"/>
 
-                    <CheckBox Name="ChkEnableCpuThreshold" Content="Bật cảnh báo khi CPU vượt ngưỡng" Foreground="White" Margin="0,8,0,0"/>
+                    <CheckBox Name="ChkEnableCpuThreshold" Content="Bật cảnh báo khi CPU vượt ngưỡng" Foreground="#1A1A1A" Margin="0,8,0,0"/>
                     <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
-                        <TextBlock Text="Ngưỡng CPU (%):" Foreground="White" VerticalAlignment="Center" Width="140"/>
+                        <TextBlock Text="Ngưỡng CPU (%):" Foreground="#1A1A1A" VerticalAlignment="Center" Width="140"/>
                         <TextBox Name="TxtCpuThreshold" Width="100" Watermark="vd: 80"/>
                     </StackPanel>
 
-                    <CheckBox Name="ChkEnableRamThreshold" Content="Bật cảnh báo khi RAM vượt ngưỡng" Foreground="White" Margin="0,8,0,0"/>
+                    <CheckBox Name="ChkEnableRamThreshold" Content="Bật cảnh báo khi RAM vượt ngưỡng" Foreground="#1A1A1A" Margin="0,8,0,0"/>
                     <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
-                        <TextBlock Text="Ngưỡng RAM (% tổng RAM hệ thống):" Foreground="White" VerticalAlignment="Center" Width="220"/>
+                        <TextBlock Text="Ngưỡng RAM (% tổng RAM hệ thống):" Foreground="#1A1A1A" VerticalAlignment="Center" Width="220"/>
                         <TextBox Name="TxtRamThreshold" Width="100" Watermark="vd: 50"/>
                     </StackPanel>
                 </StackPanel>
@@ -70,71 +70,71 @@
 
 
             <!-- Risk Scoring -->
-            <Border Background="#1e1e2e" CornerRadius="8" Padding="15">
+            <Border Background="#FFFFFF" CornerRadius="8" Padding="15">
                 <StackPanel Spacing="10">
-                    <TextBlock Text="CHẤM ĐIỂM RỦI RO (RISK SCORING)" FontSize="15" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="CHẤM ĐIỂM RỦI RO (RISK SCORING)" FontSize="15" FontWeight="Bold" Foreground="#1A1A1A"/>
                     <TextBlock Text="Tiến trình có tổng điểm vượt ngưỡng % sẽ bị đánh dấu nguy hiểm"
                             Foreground="Gray" FontSize="12"/>
 
-                    <CheckBox Name="ChkRiskEnabled" Content="Bật hệ thống chấm điểm rủi ro" Foreground="White" Margin="0,8,0,0"/>
+                    <CheckBox Name="ChkRiskEnabled" Content="Bật hệ thống chấm điểm rủi ro" Foreground="#1A1A1A" Margin="0,8,0,0"/>
 
                     <Grid ColumnDefinitions="220,100" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" Margin="0,8,0,0">
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Chạy từ thư mục tạm (điểm):" Foreground="White" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Chạy từ thư mục tạm (điểm):" Foreground="#1A1A1A" VerticalAlignment="Center"/>
                         <TextBox Grid.Row="0" Grid.Column="1" Name="TxtScoreTmp" Watermark="30"/>
 
-                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Không có hash trong DB (điểm):" Foreground="White" VerticalAlignment="Center" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Không có hash trong DB (điểm):" Foreground="#1A1A1A" VerticalAlignment="Center" Margin="0,6,0,0"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Name="TxtScoreNoHash" Watermark="20" Margin="0,6,0,0"/>
 
-                        <TextBlock Grid.Row="2" Grid.Column="0" Text="CPU cao (điểm) / Ngưỡng %:" Foreground="White" VerticalAlignment="Center" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="CPU cao (điểm) / Ngưỡng %:" Foreground="#1A1A1A" VerticalAlignment="Center" Margin="0,6,0,0"/>
                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Spacing="4" Margin="0,6,0,0">
                             <TextBox Name="TxtScoreCpu" Width="45" Watermark="15"/>
                             <TextBox Name="TxtRiskCpuThreshold" Width="45" Watermark="90"/>
                         </StackPanel>
 
-                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Mở port lạ (điểm):" Foreground="White" VerticalAlignment="Center" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Mở port lạ (điểm):" Foreground="#1A1A1A" VerticalAlignment="Center" Margin="0,6,0,0"/>
                         <TextBox Grid.Row="3" Grid.Column="1" Name="TxtScorePort" Watermark="20" Margin="0,6,0,0"/>
 
-                        <TextBlock Grid.Row="4" Grid.Column="0" Text="File thực thi thay đổi (điểm):" Foreground="White" VerticalAlignment="Center" Margin="0,6,0,0"/>
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="File thực thi thay đổi (điểm):" Foreground="#1A1A1A" VerticalAlignment="Center" Margin="0,6,0,0"/>
                         <TextBox Grid.Row="4" Grid.Column="1" Name="TxtScoreChanged" Watermark="30" Margin="0,6,0,0"/>
 
                         <TextBlock Grid.Row="5" Grid.Column="0" Text="Ngưỡng nguy hiểm (%):" Foreground="OrangeRed" FontWeight="Bold" VerticalAlignment="Center" Margin="0,10,0,0"/>
                         <TextBox Grid.Row="5" Grid.Column="1" Name="TxtDangerThreshold" Watermark="50" Margin="0,10,0,0"/>
                     </Grid>
 
-                    <TextBlock Text="Danh sách cổng tin cậy (cách nhau bằng dấu phẩy):" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBlock Text="Danh sách cổng tin cậy (cách nhau bằng dấu phẩy):" Foreground="#1A1A1A" Margin="0,10,0,0"/>
                     <TextBox Name="TxtTrustedPorts" Watermark="22,80,443,3306..."/>
 
-                    <TextBlock Text="CSDL hash đáng tin cậy (baseline):" FontWeight="Bold" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBlock Text="CSDL hash đáng tin cậy (baseline):" FontWeight="Bold" Foreground="#1A1A1A" Margin="0,10,0,0"/>
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <TextBox Name="TxtNewKnownPath" Width="280" Watermark="vd: /usr/sbin/sshd"/>
                         <TextBox Name="TxtNewKnownDesc" Width="180" Watermark="Mô tả (tùy chọn)"/>
-                        <Button Content="Thêm baseline" Click="OnAddKnownHashClick" Background="#27ae60" Foreground="White"/>
+                        <Button Content="Thêm baseline" Click="OnAddKnownHashClick" Background="#27ae60" Foreground="#1A1A1A"/>
                     </StackPanel>
-                    <ListBox Name="LstKnownHashes" Height="120" Background="#151521">
+                    <ListBox Name="LstKnownHashes" Height="120" Background="#FAFAFC">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="*,Auto" Margin="4">
                                     <StackPanel Grid.Column="0">
-                                        <TextBlock Text="{Binding ExePath}" Foreground="White" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding ExePath}" Foreground="#1A1A1A" FontWeight="Bold"/>
                                         <TextBlock Text="{Binding Description}" Foreground="Gray" FontSize="11"/>
                                     </StackPanel>
                                     <Button Grid.Column="1" Content="Xóa" Tag="{Binding ExePath}"
-                                            Click="OnRemoveKnownHashClick" Background="#c0392b" Foreground="White" Padding="8,4" FontSize="11"/>
+                                            Click="OnRemoveKnownHashClick" Background="#c0392b" Foreground="#ffffff" Padding="8,4" FontSize="11"/>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
 
                     <Button Content="Lưu cấu hình Risk Scoring" Click="OnSaveRiskConfigClick"
-                            Background="#e67e22" Foreground="White" Padding="14,8" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                            Background="#e67e22" Foreground="#1A1A1A" Padding="14,8" HorizontalAlignment="Left" Margin="0,10,0,0"/>
                 </StackPanel>
             </Border>
             
             <StackPanel Orientation="Horizontal" Spacing="8">
                 <Button Content="Lưu cấu hình" Click="OnSaveClick"
-                        Background="#27ae60" Foreground="White" Padding="14,8"/>
+                        Background="#27ae60" Foreground="#1A1A1A" Padding="14,8"/>
                 <Button Content="Gửi thử" Click="OnTestClick"
-                        Background="#2980b9" Foreground="White" Padding="14,8"/>
+                        Background="#2980b9" Foreground="#1A1A1A" Padding="14,8"/>
             </StackPanel>
 
             <TextBlock Name="TxtSettingsStatus" Foreground="Gray" TextWrapping="Wrap"/>
