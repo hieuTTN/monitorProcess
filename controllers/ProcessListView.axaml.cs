@@ -353,20 +353,46 @@ public partial class ProcessListView : UserControl
     }
 
     private static string GetRealUserHomeDirectory()
+{
+    // Trường hợp chạy bằng "sudo dotnet run" (lúc code/test thủ công).
+    var sudoUser = Environment.GetEnvironmentVariable("SUDO_USER");
+    if (!string.IsNullOrEmpty(sudoUser))
     {
-        // Nếu đang chạy qua sudo, SUDO_USER chứa tên user gốc (vd "hieutv").
-        var sudoUser = Environment.GetEnvironmentVariable("SUDO_USER");
-
-        if (!string.IsNullOrEmpty(sudoUser))
-        {
-            var sudoUserHome = $"/home/{sudoUser}";
-            if (Directory.Exists(sudoUserHome))
-                return sudoUserHome;
-        }
-
-        // Không chạy bằng sudo -> home hiện tại đã đúng là của user thật.
-        return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        var sudoUserHome = $"/home/{sudoUser}";
+        if (Directory.Exists(sudoUserHome))
+            return sudoUserHome;
     }
+
+    // Trường hợp chạy qua icon Desktop bằng pkexec - không có SUDO_USER,
+    // thay vào đó có PKEXEC_UID (chỉ là con số UID, cần tra ngược ra username).
+    var pkexecUid = Environment.GetEnvironmentVariable("PKEXEC_UID");
+    if (!string.IsNullOrEmpty(pkexecUid))
+    {
+        try
+        {
+            var psi = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "id",
+                Arguments = $"-nu {pkexecUid}",
+                RedirectStandardOutput = true,
+                UseShellExecute = false
+            };
+            using var proc = System.Diagnostics.Process.Start(psi);
+            var username = proc!.StandardOutput.ReadToEnd().Trim();
+            proc.WaitForExit();
+
+            var home = $"/home/{username}";
+            if (Directory.Exists(home))
+                return home;
+        }
+        catch
+        {
+            // Không tra được username -> rơi xuống fallback bên dưới.
+        }
+    }
+
+    return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+}
     
 
     private void OnRowPointerPressed(object? sender, PointerPressedEventArgs e)

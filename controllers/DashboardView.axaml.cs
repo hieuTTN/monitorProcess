@@ -14,6 +14,7 @@ public partial class DashboardView : UserControl
 {
     private readonly SystemInfoService _systemInfo = new();
     private readonly List<double> _cpuHistory = new();
+    private readonly List<double> _ramHistory = new();
     private const int MaxHistoryPoints = 30;
     private DispatcherTimer? _timer;
 
@@ -66,6 +67,17 @@ public partial class DashboardView : UserControl
         this.FindControl<TextBlock>("TxtNetTx")!.Text = $"Gửi: {FormatSpeed(snapshot.NetTxBps)}";
 
         UpdateCpuVisuals(snapshot.CpuPercent);
+
+
+        this.FindControl<TextBlock>("TxtRamModel")!.Text =
+            $"Tổng dung lượng: {snapshot.MemoryTotalMb:0} MB";
+        this.FindControl<TextBlock>("TxtRamUtil")!.Text = $"{snapshot.MemoryPercent:0.0}%";
+        this.FindControl<TextBlock>("TxtRamUsed")!.Text = $"{snapshot.MemoryUsedMb:0} MB";
+        this.FindControl<TextBlock>("TxtRamTotal")!.Text = $"{snapshot.MemoryTotalMb:0} MB";
+        this.FindControl<TextBlock>("TxtRamFree")!.Text =
+            $"{(snapshot.MemoryTotalMb - snapshot.MemoryUsedMb):0} MB";
+
+        UpdateRamVisuals(snapshot.MemoryPercent);
     }
 
     /// <summary>
@@ -143,6 +155,64 @@ public partial class DashboardView : UserControl
         {
             Points = points,
             Stroke = new SolidColorBrush(Color.Parse("#2ecc71")),
+            StrokeThickness = 2
+        };
+
+        canvas.Children.Add(area);
+        canvas.Children.Add(line);
+    }
+
+
+        /// <summary>Cập nhật lịch sử % RAM và vẽ lại area chart RAM.</summary>
+    private void UpdateRamVisuals(double ramPercent)
+    {
+        _ramHistory.Add(ramPercent);
+        if (_ramHistory.Count > MaxHistoryPoints)
+            _ramHistory.RemoveAt(0);
+
+        DrawRamAreaChart();
+    }
+
+    /// <summary>Vẽ biểu đồ vùng (area chart) RAM, cùng cơ chế với DrawCpuAreaChart nhưng dùng màu xanh dương (#3498db) để đồng bộ với card RAM USAGE ở trên.</summary>
+    private void DrawRamAreaChart()
+    {
+        var canvas = this.FindControl<Canvas>("RamChartCanvas");
+        if (canvas == null) return;
+
+        var width = canvas.Bounds.Width;
+        var height = canvas.Bounds.Height;
+
+        if (width <= 0 || height <= 0 || _ramHistory.Count < 2) return;
+
+        canvas.Children.Clear();
+
+        var stepX = width / (MaxHistoryPoints - 1);
+        var startIndex = MaxHistoryPoints - _ramHistory.Count;
+        var points = new List<Point>();
+
+        for (var i = 0; i < _ramHistory.Count; i++)
+        {
+            var x = (startIndex + i) * stepX;
+            var y = height - (_ramHistory[i] / 100.0 * height);
+            points.Add(new Point(x, y));
+        }
+
+        var areaPoints = new List<Point>(points)
+        {
+            new Point(points[^1].X, height),
+            new Point(points[0].X, height)
+        };
+
+        var area = new Polygon
+        {
+            Points = areaPoints,
+            Fill = new SolidColorBrush(Color.Parse("#3498db"), 0.25)
+        };
+
+        var line = new Polyline
+        {
+            Points = points,
+            Stroke = new SolidColorBrush(Color.Parse("#3498db")),
             StrokeThickness = 2
         };
 

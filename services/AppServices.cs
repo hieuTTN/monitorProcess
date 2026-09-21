@@ -9,20 +9,23 @@ namespace monitorProcess.Services
     /// </summary>
     public static class AppServices
     {
+         private static string DataPath(string fileName) =>
+            Path.Combine(AppContext.BaseDirectory, "Data", fileName);
+            
         public static AlertNotificationService Notifications { get; } =
-            new AlertNotificationService("Data/notification_config.json");
+            new AlertNotificationService(DataPath("notification_config.json"));
 
         public static ResourceThresholdDetectionService Thresholds { get; } =
-            new ResourceThresholdDetectionService("Data/threshold_config.json");
+            new ResourceThresholdDetectionService(DataPath("threshold_config.json"));
 
         public static RiskScoringService RiskScoring { get; } =
-            new RiskScoringService("Data/risk_scoring_config.json", "Data/known_hashes.json", new HashService());
+            new RiskScoringService(DataPath("risk_scoring_config.json"), DataPath("known_hashes.json"), new HashService());
 
         public static WhitelistService Whitelist { get; } 
-        = new WhitelistService("Data/whitelist.json", new HashService());
+        = new WhitelistService(DataPath("whitelist.json"), new HashService());
 
         public static ExecGuardSuggestionService ExecGuardSuggestions { get; } =
-            new ExecGuardSuggestionService("Data/execguard_suggestions.json");
+            new ExecGuardSuggestionService(DataPath("execguard_suggestions.json"));
         
         public static ExecGuardService ExecGuard { get; } = new ExecGuardService(Whitelist, ExecGuardSuggestions);
 

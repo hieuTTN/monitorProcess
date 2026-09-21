@@ -108,6 +108,42 @@
                     </Grid>
                 </StackPanel>
             </Border>
+
+                        <!-- Chi tiết RAM - giống Task Manager -->
+            <Border Background="#FFFFFF" CornerRadius="8" Padding="20">
+                <StackPanel Spacing="12">
+                    <StackPanel>
+                        <TextBlock Text="Bộ nhớ (RAM)" FontSize="16" Foreground="#1A1A1A"/>
+                        <TextBlock Name="TxtRamModel" Text="Đang tải..." Foreground="#6B6B76" FontSize="13"/>
+                    </StackPanel>
+
+                    <!-- Biểu đồ RAM dạng vùng (area chart) -->
+                    <Border Background="#FAFAFC" CornerRadius="6" Padding="4" Height="200">
+                        <Canvas Name="RamChartCanvas"/>
+                    </Border>
+
+                    <!-- Hàng thống kê chi tiết -->
+                    <Grid ColumnDefinitions="*,*,*,*">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Sử dụng" Foreground="#6B6B76" FontSize="11"/>
+                            <TextBlock Name="TxtRamUtil" Text="0%" Foreground="#1A1A1A" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Đã dùng" Foreground="#6B6B76" FontSize="11"/>
+                            <TextBlock Name="TxtRamUsed" Text="-" Foreground="#1A1A1A" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Tổng bộ nhớ" Foreground="#6B6B76" FontSize="11"/>
+                            <TextBlock Name="TxtRamTotal" Text="-" Foreground="#1A1A1A" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="3">
+                            <TextBlock Text="Còn trống" Foreground="#6B6B76" FontSize="11"/>
+                            <TextBlock Name="TxtRamFree" Text="-" Foreground="#1A1A1A" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
         </StackPanel>
     </ScrollViewer>
 </UserControl>
