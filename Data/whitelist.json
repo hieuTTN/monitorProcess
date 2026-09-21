@@ -126,5 +126,17 @@
   {
     "ProcessName": "dircolors",
     "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "gedit",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "gnome-calculator",
+    "ExpectedSha256": ""
+  },
+  {
+    "ProcessName": "sed",
+    "ExpectedSha256": ""
   }
 ]
