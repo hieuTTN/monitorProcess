@@ -25,5 +25,7 @@ namespace monitorProcess.Services
             new ExecGuardSuggestionService("Data/execguard_suggestions.json");
         
         public static ExecGuardService ExecGuard { get; } = new ExecGuardService(Whitelist, ExecGuardSuggestions);
+
+        public static StartupAppsService StartupApps { get; } = new StartupAppsService();
     }
 }

@@ -11,7 +11,7 @@ public partial class MainWindow : Window
     private readonly SettingsView _settingsView = new();
     private readonly HashIntegrityView _hashIntegrityView = new();
     private readonly WhitelistView _whitelistView = new();
-
+    private readonly StartupAppsView _startupAppsView = new();
 
     public MainWindow()
     {
@@ -55,6 +55,10 @@ public partial class MainWindow : Window
             case "BtnWhitelist":
                 MainContentArea.Content = _whitelistView;
                 break;
+
+            case "BtnStartupApps":
+                MainContentArea.Content = _startupAppsView;
+                break;
         }
     }
 
@@ -64,6 +68,6 @@ public partial class MainWindow : Window
     /// </summary>
     private IEnumerable<Button> GetNavButtons()
     {
-        return new[] { BtnDashboard, BtnProcess,BtnWhitelist, BtnSettings, BtnHashIntegrity };
+        return new[] { BtnDashboard, BtnProcess,BtnWhitelist, BtnSettings, BtnHashIntegrity, BtnStartupApps };
     }
 }

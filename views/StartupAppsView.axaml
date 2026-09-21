@@ -1,0 +1,66 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="monitorProcess.controllers.StartupAppsView">
+
+    <!-- Grid 3 hàng: (1) tiêu đề - cao vừa đủ nội dung, (2) khung danh sách -
+         chiếm HẾT khoảng trống còn lại và tự co giãn theo cửa sổ, (3) dòng
+         trạng thái - cao vừa đủ nội dung. -->
+    <Grid RowDefinitions="Auto,*,Auto" Margin="20">
+
+        <StackPanel Grid.Row="0" Spacing="4">
+            <TextBlock Text="ỨNG DỤNG / DỊCH VỤ KHỞI ĐỘNG CÙNG MÁY" FontSize="18" Foreground="#1A1A1A"/>
+            <TextBlock Foreground="Gray" TextWrapping="Wrap"
+                       Text="Tương đương tab Startup Apps trên Windows. Gồm 2 nhóm: (1) ứng dụng tự chạy khi ĐĂNG NHẬP vào desktop, và (2) dịch vụ systemd tự chạy khi MÁY KHỞI ĐỘNG - nên rà soát kỹ nhóm (2) vì mã độc hay lợi dụng cách này để duy trì hoạt động lâu dài."/>
+        </StackPanel>
+
+        <Border Grid.Row="1" Background="#fff" CornerRadius="8" Padding="16" Margin="0,15,0,15">
+            <!-- Grid con bên trong Border cũng chia 3 hàng, để riêng ListBox
+                 (hàng cuối) được giãn hết phần còn lại bên trong khung này. -->
+            <Grid RowDefinitions="Auto,Auto,*">
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10">
+                    <TextBlock Text="DANH SÁCH" FontWeight="Bold" Foreground="#1A1A1A" VerticalAlignment="Center"/>
+                    <TextBlock Name="TxtCount" Foreground="Gray" VerticalAlignment="Center"/>
+                    <Button Content="🔄 Làm mới" Click="OnRefreshClick"
+                            Background="#2980b9" Foreground="#1A1A1A" Padding="10,4" FontSize="12"/>
+                </StackPanel>
+
+                <TextBox Grid.Row="1" Name="TxtSearch" Margin="0,10,0,10"
+                          Watermark="Tìm theo tên, lệnh chạy hoặc mô tả..." TextChanged="OnSearchChanged"/>
+
+                <ListBox Grid.Row="2" Name="LstStartupItems" Background="#ffffff">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="*,Auto" Margin="4,6">
+                                <StackPanel Grid.Column="0">
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                        <Border Background="#fff" CornerRadius="4" Padding="6,1">
+                                            <TextBlock Text="{Binding SourceLabel}" Foreground="#1A1A1A" FontSize="10"/>
+                                        </Border>
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding Command}" Foreground="#7f8c8d" FontSize="11" FontFamily="Monospace"
+                                                TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding Description}" Foreground="Gray" FontSize="11" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding FilePath}" Foreground="#555577" FontSize="10"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding EnabledLabel}" HorizontalAlignment="Center"
+                                               Foreground="{Binding EnabledColor}"
+                                               FontWeight="Bold" FontSize="12"/>
+                                    <Button Content="{Binding ToggleLabel}" Tag="{Binding}" Click="OnToggleClick"
+                                            Background="#7f8c8d" Foreground="#1A1A1A" Padding="10,4" FontSize="11"
+                                            HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </Grid>
+        </Border>
+
+        <TextBlock Grid.Row="2" Name="TxtStatus" Foreground="Gray" TextWrapping="Wrap"/>
+
+    </Grid>
+</UserControl>
