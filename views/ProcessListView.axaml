@@ -45,41 +45,50 @@
             <ListBox Name="LstProcesses" Background="Transparent">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border Padding="8,6" CornerRadius="4" Background="{Binding RowBackground}">
+                        <Border Padding="8,6" CornerRadius="4" Background="{Binding RowBackground}"
+                                PointerPressed="OnRowPointerPressed">
+
+                            <!-- Menu thao tác - chỉ hiện khi chuột phải -->
+                            <Border.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Kill" Tag="{Binding Pid}" Click="OnKillClick"/>
+                                    <MenuItem Header="Dừng" Tag="{Binding Pid}" Click="OnStopClick"/>
+                                    <MenuItem Header="Tiếp tục" Tag="{Binding Pid}" Click="OnContinueClick"/>
+                                    <MenuItem Header="Khởi động lại" Tag="{Binding Pid}" Click="OnRestartClick"/>
+                                </ContextMenu>
+                            </Border.ContextMenu>
+
                             <StackPanel>
-                                <TextBlock Foreground="#1A1A1A" FontWeight="Bold">
-                                    <Run Text="{Binding Pid}"/>
-                                    <Run Text=" - "/>
-                                    <Run Text="{Binding Name}"/>
-                                    <Run Text=" ("/>
-                                    <Run Text="{Binding UserName}"/>
-                                    <Run Text=") - "/>
-                                    <Run Text="{Binding State}"/>
-                                </TextBlock>
-                                <TextBlock Foreground="Gray" FontSize="12" Text="{Binding ExePath}" />
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <TextBlock Grid.Column="0" Foreground="#1A1A1A" FontWeight="Bold">
+                                        <Run Text="{Binding Pid}"/>
+                                        <Run Text=" - "/>
+                                        <Run Text="{Binding Name}"/>
+                                        <Run Text=" ("/>
+                                        <Run Text="{Binding UserName}"/>
+                                        <Run Text=") - "/>
+                                        <Run Text="{Binding State}"/>
+                                        <Run Text=" · "/>
+                                        <Run Text="{Binding CategoryText}"/>
+                                    </TextBlock>
+
+                                    <!-- Icon "i" - chỉ hiện khi có cảnh báo, di chuột vào mới thấy nội dung -->
+                                    <Border Grid.Column="1" Width="18" Height="18" CornerRadius="9"
+                                            Background="#c0392b" IsVisible="{Binding IsSuspicious}"
+                                            ToolTip.Tip="{Binding AlertText}">
+                                        <TextBlock Text="i" Foreground="White" FontWeight="Bold" FontSize="11"
+                                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </Grid>
+
+                                <TextBlock Foreground="#6B6B76" FontSize="12" Text="{Binding ExePath}" />
+
                                 <StackPanel Orientation="Horizontal" Spacing="16">
                                     <TextBlock Foreground="#2ecc71" FontSize="12" Text="{Binding ResourceText}" />
                                     <TextBlock Foreground="#9b59b6" FontSize="12" Text="{Binding IoText}" />
                                 </StackPanel>
-                                
-                                <TextBlock Foreground="#3498db" FontSize="12"
-                                           Text="{Binding Ports}"
-                                           IsVisible="{Binding !!Ports.Length}" />
 
-                                <TextBlock Foreground="OrangeRed" FontSize="12"
-                                           Text="{Binding AlertText}"
-                                           IsVisible="{Binding IsSuspicious}" />
-
-                                <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,8,0,0">
-                                    <Button Content="Kill" Tag="{Binding Pid}" Click="OnKillClick"
-                                            Background="#c0392b" Foreground="#1A1A1A" Padding="10,4" FontSize="11"/>
-                                    <Button Content="Dừng" Tag="{Binding Pid}" Click="OnStopClick"
-                                            Background="#e67e22" Foreground="#1A1A1A" Padding="10,4" FontSize="11"/>
-                                    <Button Content="Tiếp tục" Tag="{Binding Pid}" Click="OnContinueClick"
-                                            Background="#27ae60" Foreground="#1A1A1A" Padding="10,4" FontSize="11"/>
-                                    <Button Content="Khởi động lại" Tag="{Binding Pid}" Click="OnRestartClick"
-                                            Background="#2980b9" Foreground="#1A1A1A" Padding="10,4" FontSize="11"/>
-                                </StackPanel>
+                                <TextBlock Foreground="#3498db" FontSize="12" Text="{Binding Ports}" />
                             </StackPanel>
                         </Border>
                     </DataTemplate>

@@ -7,6 +7,9 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Threading;
 using monitorProcess.Services;
+using Avalonia.Input;
+using Avalonia;
+using Avalonia.Media;
 
 namespace monitorProcess.controllers;
 
@@ -158,7 +161,8 @@ public partial class ProcessListView : UserControl
                 WriteSpeedBps = io?.WriteSpeedBps ?? 0,
                 AlertText = alerts.Count > 0 ? string.Join(" | ", alerts) : "",
                 IsSuspicious = alerts.Count > 0,
-                RiskScore = riskResult.Score
+                RiskScore = riskResult.Score,
+                CategoryText = (p.Uid == 0 || p.Uid < 1000) ? "Hệ thống" : "Người dùng",
             });
         }
 
@@ -250,7 +254,7 @@ public partial class ProcessListView : UserControl
 
     private void OnRestartClick(object? sender, RoutedEventArgs e)
     {
-        if (sender is not Button btn || btn.Tag is not int pid)
+        if (sender is not Control ctrl || ctrl.Tag is not int pid)
             return;
 
         var row = _allRowsCache.FirstOrDefault(r => r.Pid == pid);
@@ -267,7 +271,7 @@ public partial class ProcessListView : UserControl
 
     private void ExecuteAction(object? sender, Func<int, ProcessActionResult> action)
     {
-        if (sender is not Button btn || btn.Tag is not int pid)
+        if (sender is not Control ctrl || ctrl.Tag is not int pid)
             return;
 
         var result = action(pid);
@@ -364,4 +368,23 @@ public partial class ProcessListView : UserControl
         return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
     }
     
+
+    private void OnRowPointerPressed(object? sender, PointerPressedEventArgs e)
+    {
+        // Chỉ mở chi tiết khi bấm CHUỘT TRÁI - chuột phải dành riêng cho ContextMenu.
+        if (!e.GetCurrentPoint(sender as Visual).Properties.IsLeftButtonPressed)
+            return;
+
+        if (sender is not Border border || border.DataContext is not ProcessRowViewModel row)
+            return;
+
+        var owner = TopLevel.GetTopLevel(this) as Window;
+        var detailWindow = new ProcessDetailWindow(row);
+
+        if (owner != null)
+            detailWindow.ShowDialog(owner);
+        else
+            detailWindow.Show();
+    }
+
 }

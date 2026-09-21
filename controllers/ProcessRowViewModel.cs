@@ -23,6 +23,8 @@ namespace monitorProcess.controllers
 
         public int RiskScore { get; set; }
 
+        public string CategoryText { get; set; } = string.Empty;
+        
         public string ResourceText => $"CPU: {CpuPercent:0.0}%   RAM: {MemoryMb:0.0} MB";
 
         public string IoText => $"Đọc: {FormatSpeed(ReadSpeedBps)}   Ghi: {FormatSpeed(WriteSpeedBps)}";

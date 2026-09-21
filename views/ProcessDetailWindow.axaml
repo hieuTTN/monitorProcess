@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="monitorProcess.controllers.ProcessDetailWindow"
+        Title="Chi tiết tiến trình"
+        Width="520" Height="560"
+        WindowStartupLocation="CenterOwner"
+        Background="#F4F4F7">
+
+    <ScrollViewer>
+        <StackPanel Margin="20" Spacing="12">
+            <TextBlock Name="TxtTitle" Text="Chi tiết tiến trình" FontSize="18" Foreground="#1A1A1A"/>
+
+            <Border Name="AlertBox" Background="#FDECEA" CornerRadius="8" Padding="14" IsVisible="False">
+                <StackPanel Spacing="4">
+                    <TextBlock Text="⚠ CẢNH BÁO" FontWeight="Bold" Foreground="#c0392b" FontSize="13"/>
+                    <TextBlock Name="TxtAlertDetail" Foreground="#c0392b" FontSize="12" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" CornerRadius="8" Padding="16">
+                <StackPanel Name="PanelDetails" Spacing="10"/>
+            </Border>
+
+            <Button Content="Đóng" Click="OnCloseClick" HorizontalAlignment="Right" Padding="16,8"/>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
