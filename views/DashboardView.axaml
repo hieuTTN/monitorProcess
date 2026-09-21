@@ -11,19 +11,19 @@
             <Border Background="#FFFFFF" CornerRadius="8" Padding="16">
                 <StackPanel Orientation="Horizontal" Spacing="40">
                     <StackPanel>
-                        <TextBlock Text="HOSTNAME" Foreground="Gray" FontSize="11"/>
+                        <TextBlock Text="HOSTNAME" Foreground="#6B6B76" FontSize="11"/>
                         <TextBlock Name="TxtHostname" Text="-" Foreground="#1A1A1A" FontWeight="Bold" FontSize="15"/>
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock Text="PHIÊN BẢN UBUNTU" Foreground="Gray" FontSize="11"/>
+                        <TextBlock Text="PHIÊN BẢN UBUNTU" Foreground="#6B6B76" FontSize="11"/>
                         <TextBlock Name="TxtOsVersion" Text="-" Foreground="#1A1A1A" FontWeight="Bold" FontSize="15"/>
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock Text="KERNEL" Foreground="Gray" FontSize="11"/>
+                        <TextBlock Text="KERNEL" Foreground="#6B6B76" FontSize="11"/>
                         <TextBlock Name="TxtKernel" Text="-" Foreground="#1A1A1A" FontWeight="Bold" FontSize="15"/>
                     </StackPanel>
                     <StackPanel>
-                        <TextBlock Text="UPTIME" Foreground="Gray" FontSize="11"/>
+                        <TextBlock Text="UPTIME" Foreground="#6B6B76" FontSize="11"/>
                         <TextBlock Name="TxtUptime" Text="-" Foreground="#1A1A1A" FontWeight="Bold" FontSize="15"/>
                     </StackPanel>
                 </StackPanel>
@@ -34,7 +34,7 @@
                 <!-- CPU -->
                 <Border Grid.Column="0" Background="#FFFFFF" CornerRadius="8" Padding="16" Margin="0,0,8,0">
                     <StackPanel Spacing="8">
-                        <TextBlock Text="CPU USAGE" Foreground="Gray" FontSize="11"/>
+                        <TextBlock Text="CPU USAGE" Foreground="#6B6B76" FontSize="11"/>
                         <TextBlock Name="TxtCpuPercent" Text="0%" Foreground="#2ecc71" FontSize="26" FontWeight="Bold"/>
                         <ProgressBar Name="BarCpu" Minimum="0" Maximum="100" Value="0" Height="6"/>
                         <StackPanel Name="SparkCpu" Orientation="Horizontal" Height="40" Spacing="2" VerticalAlignment="Bottom"/>
@@ -44,17 +44,17 @@
                 <!-- RAM -->
                 <Border Grid.Column="1" Background="#FFFFFF" CornerRadius="8" Padding="16" Margin="0,0,8,0">
                     <StackPanel Spacing="8">
-                        <TextBlock Text="RAM USAGE" Foreground="Gray" FontSize="11"/>
+                        <TextBlock Text="RAM USAGE" Foreground="#6B6B76" FontSize="11"/>
                         <TextBlock Name="TxtRamPercent" Text="0%" Foreground="#3498db" FontSize="26" FontWeight="Bold"/>
                         <ProgressBar Name="BarRam" Minimum="0" Maximum="100" Value="0" Height="6"/>
-                        <TextBlock Name="TxtRamDetail" Text="0 / 0 MB" Foreground="Gray" FontSize="12"/>
+                        <TextBlock Name="TxtRamDetail" Text="0 / 0 MB" Foreground="#6B6B76" FontSize="12"/>
                     </StackPanel>
                 </Border>
 
                 <!-- Disk I/O -->
                 <Border Grid.Column="2" Background="#FFFFFF" CornerRadius="8" Padding="16" Margin="0,0,8,0">
                     <StackPanel Spacing="8">
-                        <TextBlock Text="DISK I/O" Foreground="Gray" FontSize="11"/>
+                        <TextBlock Text="DISK I/O" Foreground="#6B6B76" FontSize="11"/>
                         <TextBlock Name="TxtDiskRead" Text="Đọc: 0 B/s" Foreground="#9b59b6" FontSize="14" FontWeight="Bold"/>
                         <TextBlock Name="TxtDiskWrite" Text="Ghi: 0 B/s" Foreground="#9b59b6" FontSize="14" FontWeight="Bold"/>
                     </StackPanel>
@@ -63,13 +63,51 @@
                 <!-- Network -->
                 <Border Grid.Column="3" Background="#FFFFFF" CornerRadius="8" Padding="16">
                     <StackPanel Spacing="8">
-                        <TextBlock Text="NETWORK TRAFFIC" Foreground="Gray" FontSize="11"/>
+                        <TextBlock Text="NETWORK TRAFFIC" Foreground="#6B6B76" FontSize="11"/>
                         <TextBlock Name="TxtNetRx" Text="Nhận: 0 B/s" Foreground="#e67e22" FontSize="14" FontWeight="Bold"/>
                         <TextBlock Name="TxtNetTx" Text="Gửi: 0 B/s" Foreground="#e67e22" FontSize="14" FontWeight="Bold"/>
                     </StackPanel>
                 </Border>
             </Grid>
 
+            <!-- Chi tiết CPU - giống Task Manager -->
+            <Border Background="#FFFFFF" CornerRadius="8" Padding="20">
+                <StackPanel Spacing="12">
+                    <StackPanel>
+                        <TextBlock Text="CPU" FontSize="16" Foreground="#1A1A1A"/>
+                        <TextBlock Name="TxtCpuModel" Text="Đang tải..." Foreground="#6B6B76" FontSize="13"/>
+                    </StackPanel>
+
+                    <!-- Biểu đồ CPU dạng vùng (area chart) -->
+                    <Border Background="#FAFAFC" CornerRadius="6" Padding="4" Height="200">
+                        <Canvas Name="CpuChartCanvas"/>
+                    </Border>
+
+                    <!-- Hàng thống kê chi tiết -->
+                    <Grid ColumnDefinitions="*,*,*,*,*">
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Sử dụng" Foreground="#6B6B76" FontSize="11"/>
+                            <TextBlock Name="TxtCpuUtil" Text="0%" Foreground="#1A1A1A" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Nhân (Cores)" Foreground="#6B6B76" FontSize="11"/>
+                            <TextBlock Name="TxtCpuCores" Text="-" Foreground="#1A1A1A" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Luồng logic" Foreground="#6B6B76" FontSize="11"/>
+                            <TextBlock Name="TxtCpuLogical" Text="-" Foreground="#1A1A1A" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="3">
+                            <TextBlock Text="Tiến trình" Foreground="#6B6B76" FontSize="11"/>
+                            <TextBlock Name="TxtProcessCount" Text="-" Foreground="#1A1A1A" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="4">
+                            <TextBlock Text="Thời gian hoạt động" Foreground="#6B6B76" FontSize="11"/>
+                            <TextBlock Name="TxtUptime2" Text="-" Foreground="#1A1A1A" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

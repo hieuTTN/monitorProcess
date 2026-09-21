@@ -237,5 +237,67 @@ namespace monitorProcess.Services
 
             return true; // "sda1", "vda1"... kết thúc bằng số -> coi là partition
         }
+
+
+        /// <summary>Đọc tên đầy đủ của CPU (vd "Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz") từ /proc/cpuinfo.</summary>
+        public string GetCpuModelName()
+        {
+            const string path = "/proc/cpuinfo";
+            if (!File.Exists(path)) return "Không xác định";
+
+            foreach (var line in File.ReadLines(path))
+            {
+                if (line.StartsWith("model name"))
+                {
+                    var idx = line.IndexOf(':');
+                    return idx >= 0 ? line.Substring(idx + 1).Trim() : "Không xác định";
+                }
+            }
+            return "Không xác định";
+        }
+
+        /// <summary>Số nhân vật lý (cores) và số luồng logic (logical processors) của CPU.</summary>
+        public (int cores, int logicalProcessors) GetCpuCoreInfo()
+        {
+            const string path = "/proc/cpuinfo";
+            if (!File.Exists(path)) return (0, 0);
+
+            var logical = 0;
+            var cores = 0;
+
+            foreach (var line in File.ReadLines(path))
+            {
+                if (line.StartsWith("processor"))
+                {
+                    logical++;
+                }
+                else if (line.StartsWith("cpu cores") && cores == 0)
+                {
+                    var idx = line.IndexOf(':');
+                    if (idx >= 0 && int.TryParse(line.Substring(idx + 1).Trim(), out var c))
+                        cores = c;
+                }
+            }
+
+            // Một số máy ảo không có field "cpu cores" -> fallback dùng luôn số luồng logic.
+            if (cores == 0) cores = logical;
+
+            return (cores, logical);
+        }
+
+        /// <summary>Đếm nhanh tổng số tiến trình đang chạy (số thư mục PID trong /proc).</summary>
+        public int GetProcessCount()
+        {
+            try
+            {
+                return Directory.EnumerateDirectories("/proc")
+                    .Count(d => int.TryParse(Path.GetFileName(d), out _));
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+        
     }
 }
